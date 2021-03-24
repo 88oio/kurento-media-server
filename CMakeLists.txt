@@ -13,7 +13,7 @@ find_package(KurentoHelpers REQUIRED)
 
 include(KurentoGitHelpers)
 install_git_hook(pre-commit ${CMAKE_CURRENT_SOURCE_DIR}/hooks/pre-commit.hook)
-get_git_version(PROJECT_VERSION 6.14.1-dev)
+get_git_version(PROJECT_VERSION 6.16.1-dev)
 message(STATUS "Project version: ${PROJECT_NAME}-${PROJECT_VERSION}")
 
 # Compiler flags
@@ -24,7 +24,8 @@ common_buildflags_set()
 # Development: Add here exceptions to the "Warnings are Errors" rule.
 # Also, DOCUMENT WHY and always remove them as soon as the problem is fixed.
 # For example:
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-error=unused-function")
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-error=unused-function")
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-error=unused-variable")
 
 # FIXME Disable error from deprecated dynamic exception specifications in glibmm
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=deprecated")
@@ -41,7 +42,7 @@ set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -DGST_DISABLE_DEPRECATED")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DGST_DISABLE_DEPRECATED")
 
 include(GenericFind)
-generic_find(LIBNAME KMSCORE VERSION ^6.7.0 REQUIRED)
+generic_find(LIBNAME KMSCORE VERSION ^6.16.1-dev REQUIRED)
 
 # Generate file "config.h"
 check_version_internal(>=2.6.2 sigc++-2.0_VERSION OUTPUT_ERROR)
